@@ -125,8 +125,13 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
-# MEDIA_URL = '/files/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '8b36be357f77bf'
+EMAIL_HOST_PASSWORD = 'd6fc80425c5c25'
+EMAIL_PORT = '2525'
+EMAIL_USE_TLS = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
