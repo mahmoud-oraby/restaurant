@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from .forms import NewUserForm
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import authenticate,login as auth_login
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib import messages
 # Create your views here.
 
 
@@ -23,5 +24,4 @@ def register(request):
 
     return render(request,"html/register.html",{"form":form})
 
-def done(request):
-    return render(request,"html/done.html")
+

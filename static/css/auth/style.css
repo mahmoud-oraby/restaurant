@@ -80,3 +80,14 @@ border-color: #320777
     font-weight: bold;
     font-size: 20px;
 }
+
+.login{
+    margin-top: 25px;
+    color: #1f0050;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.login a{
+    text-decoration: none;
+}
