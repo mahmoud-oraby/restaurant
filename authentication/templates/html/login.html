@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+  {% load static %}
+  {% block style %}
+    <link rel="stylesheet" href="{% static 'css/auth/style.css' %}">
+  {% endblock %}
+
+{% block content %}
+    {% if messages %}
+    {% for m in messages %}
+    {{m}}
+    {% endfor %}
+    {% endif %}
+    {% if not user.is_authenticated %}
+        <div class="text-center signup">
+            Signup
+        </div>
+        <form  action="" method="post" novalidate >
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-control {% if field.errors %} errors {% endif %} ">
+                {{field.label_tag}}
+                {{field}}
+                {% for error in field.errors %}
+                <span class="error" >{{error}}</span>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            <button type="submit">Register</button>
+            <div class="text-center login"> Your don't have an account <a  href="{% url 'register' %}">Register</a></div>
+        </form>
+    {% else %}
+    <h1>You are authenticated</h1>
+    {% endif %}
+
+{% endblock content %}
