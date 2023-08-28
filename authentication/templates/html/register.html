@@ -8,10 +8,7 @@
   <div class="text-center signup">
     Signup
   </div>
-  {% if user.is_authenticated %}
-  <h1>You are authenticated</h1>
-  {% else %}
-  <form  action="/" method="post" novalidate >
+  <form method="post" novalidate >
     {% csrf_token %}
     {% for field in form %}
       <div class="form-control {% if field.errors %} errors {% endif %} ">
@@ -25,7 +22,4 @@
     <button type="submit">Register</button>
     <div class="text-center login"> Your already have an account <a  href="{% url 'login' %}">Login</a></div>
   </form>
-  {% endif %}
-  
-
 {% endblock content %}

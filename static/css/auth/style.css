@@ -91,3 +91,8 @@ border-color: #320777
 .login a{
     text-decoration: none;
 }
+
+.alert{
+    width: fit-content ;
+    margin: 0 auto 10px;
+}
