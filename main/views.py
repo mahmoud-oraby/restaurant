@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import Menu
 # Create your views here.
 
 
@@ -12,7 +12,9 @@ def about(request):
 
 
 def menu(request):
-    return render(request, 'menu.html')
+    menu = Menu.objects.all()
+
+    return render(request, 'menu.html', {'menu': menu})
 
 
 def contact(request):
