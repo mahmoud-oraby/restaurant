@@ -40,3 +40,13 @@ class MasterChef(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+class Query(models.Model):
+    name = models.CharField(max_length=30)
+    email = models.EmailField(max_length=255)
+    subject = models.CharField(max_length=80)
+    message = models.TextField()
+
+    def __str__(self) -> str:
+        return f'{self.name}-{self.subject}'

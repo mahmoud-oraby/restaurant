@@ -11,13 +11,6 @@ Contact
 
 {% block content %}
 <div class="container-xxl bg-white p-0">
-    <!-- Spinner Start -->
-    <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-          <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-              <span class="sr-only">Loading...</span>
-          </div>
-      </div> -->
-    <!-- Spinner End -->
 
     <!-- Navbar & Hero Start -->
     <div class="container-xxl position-relative p-0">
@@ -40,10 +33,9 @@ Contact
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto py-0 pe-4">
-            <a href="index.html" class="nav-item nav-link">Home</a>
-            <a href="about.html" class="nav-item nav-link">About</a>
-            <a href="service.html" class="nav-item nav-link">Service</a>
-            <a href="menu.html" class="nav-item nav-link">Menu</a>
+            <a href="{% url 'main:index' %}" class="nav-item nav-link">Home</a>
+            <a href="{% url 'main:about' %}" class="nav-item nav-link">About</a>
+            <a href="{% url 'main:menu' %}" class="nav-item nav-link">Menu</a>
             <div class="nav-item dropdown">
               <a
                 href="#"
@@ -59,9 +51,10 @@ Contact
                 >
               </div>
             </div>
-            <a href="contact.html" class="nav-item nav-link active"
+            <a href="{% url 'main:contact' %}" class="nav-item nav-link active"
               >Contact</a
             >
+            <a href="{% url 'profiles:my-profile' %}" class="nav-item nav-link ">Profile</a>
           </div>
           <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
         </div>
@@ -72,18 +65,6 @@ Contact
           <h1 class="display-3 text-white mb-3 animated slideInDown">
             Contact Us
           </h1>
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb justify-content-center text-uppercase">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item"><a href="#">Pages</a></li>
-              <li
-                class="breadcrumb-item text-white active"
-                aria-current="page"
-              >
-                Contact
-              </li>
-            </ol>
-          </nav>
         </div>
       </div>
     </div>
@@ -101,43 +82,7 @@ Contact
           <h1 class="mb-5">Contact For Any Query</h1>
         </div>
         <div class="row g-4">
-          <div class="col-12">
-            <div class="row gy-4">
-              <div class="col-md-4">
-                <h5
-                  class="section-title ff-secondary fw-normal text-start text-primary"
-                >
-                  Booking
-                </h5>
-                <p>
-                  <i class="fa fa-envelope-open text-primary me-2"></i
-                  >book@example.com
-                </p>
-              </div>
-              <div class="col-md-4">
-                <h5
-                  class="section-title ff-secondary fw-normal text-start text-primary"
-                >
-                  General
-                </h5>
-                <p>
-                  <i class="fa fa-envelope-open text-primary me-2"></i
-                  >info@example.com
-                </p>
-              </div>
-              <div class="col-md-4">
-                <h5
-                  class="section-title ff-secondary fw-normal text-start text-primary"
-                >
-                  Technical
-                </h5>
-                <p>
-                  <i class="fa fa-envelope-open text-primary me-2"></i
-                  >tech@example.com
-                </p>
-              </div>
-            </div>
-          </div>
+          
           <div class="col-md-6 wow fadeIn" data-wow-delay="0.1s">
             <iframe
               class="position-relative rounded w-100 h-100"
@@ -151,59 +96,24 @@ Contact
           </div>
           <div class="col-md-6">
             <div class="wow fadeInUp" data-wow-delay="0.2s">
-              <form>
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <div class="form-floating">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="name"
-                        placeholder="Your Name"
-                      />
-                      <label for="name">Your Name</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-floating">
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="email"
-                        placeholder="Your Email"
-                      />
-                      <label for="email">Your Email</label>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="form-floating">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="subject"
-                        placeholder="Subject"
-                      />
-                      <label for="subject">Subject</label>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="form-floating">
-                      <textarea
-                        class="form-control"
-                        placeholder="Leave a message here"
-                        id="message"
-                        style="height: 150px"
-                      ></textarea>
-                      <label for="message">Message</label>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <button class="btn btn-primary w-100 py-3" type="submit">
-                      Send Message
-                    </button>
-                  </div>
+              <form action="" method="post" novalidate>
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-control {% if field.errors %} errors {% endif %} ">
+                    {{field.label_tag}}
+                    {{field}}
+                    {% for error in field.errors %}
+                    <span class="error">{{error}}</span>
+                    {% endfor %}
                 </div>
-              </form>
+                {% endfor %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p {% if message.tags %} class="{{message.tags}}" {% endif %} role="alert">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+                <button type="submit">Send</button>
+            </form>
             </div>
           </div>
         </div>

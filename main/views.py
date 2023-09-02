@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from .models import Menu, MasterChef
+from .models import Menu, MasterChef, Query
+from .forms import QueryForm
+from django.contrib import messages
 # Create your views here.
 
 
@@ -19,4 +21,12 @@ def menu(request):
 
 
 def contact(request):
-    return render(request, 'contact.html')
+    form = QueryForm()
+    if request.method == "POST":
+        form = QueryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Success!")
+        else:
+            messages.error(request, "Invalid")
+    return render(request, 'contact.html', {"form": form})

@@ -17,7 +17,6 @@ class Profile(models.Model):
     gender = models.CharField(choices=GENDER_CHOSES, max_length=1, blank=True)
     country = models.CharField(max_length=30, blank=True)
     image = models.ImageField(upload_to='uploads/profiles_images', blank=True)
-    bio = models.TextField(default="No bio")
 
     def __str__(self) -> str:
         return self.user.username

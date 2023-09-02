@@ -21,7 +21,6 @@
           <h1 class="text-primary m-0">
             <i class="fa fa-utensils me-3"></i>Restoran
           </h1>
-          <!-- <img src="img/logo.png" alt="Logo"> -->
         </a>
         <button
           class="navbar-toggler"
@@ -51,7 +50,8 @@
                 >
               </div>
             </div>
-            <a href="contact.html" class="nav-item nav-link">Contact</a>
+            <a href="{% url 'main:contact' %}" class="nav-item nav-link">Contact</a>
+            <a href="{% url 'profiles:my-profile' %}" class="nav-item nav-link">Profile</a>
           </div>
           <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
         </div>
