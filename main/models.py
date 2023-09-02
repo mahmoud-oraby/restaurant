@@ -1,3 +1,4 @@
+from typing import Iterable, Optional
 from django.db import models
 
 # Create your models here.
@@ -22,18 +23,20 @@ class Menu(models.Model):
 
 class SocialChef(models.Model):
     title = models.CharField(max_length=20)
-    url = models.URLField()
+    url = models.URLField(unique=True)
 
     def __str__(self) -> str:
-        return self.title
+        return f"{self.title}-{self.social.all()[0]}"
 
 
 class MasterChef(models.Model):
     name = models.CharField(max_length=20)
-    social = models.ForeignKey(
-        SocialChef, on_delete=models.CASCADE, null=True)
-    image = models.ImageField(upload_to="uploads/chefs_images")
+    social = models.ManyToManyField(
+        SocialChef,  related_name="social")
+    image = models.ImageField(
+        upload_to="uploads/chefs_images")
     details = models.TextField()
+    designation = models.DateField(default="2000-1-1")
 
     def __str__(self) -> str:
         return self.name

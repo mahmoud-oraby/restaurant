@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Menu
+from .models import Menu, MasterChef
 # Create your views here.
 
 
@@ -8,7 +8,8 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'about.html')
+    master_chefs = MasterChef.objects.all()
+    return render(request, 'about.html', {"chefs": master_chefs})
 
 
 def menu(request):
