@@ -30,3 +30,8 @@ def contact(request):
         else:
             messages.error(request, "Invalid")
     return render(request, 'contact.html', {"form": form})
+
+
+def booking(request):
+
+    return render(request, 'booking.html')

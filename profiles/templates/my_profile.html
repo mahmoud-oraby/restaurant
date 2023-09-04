@@ -43,7 +43,7 @@
               >Pages</a
             >
             <div class="dropdown-menu m-0">
-              <a href="booking.html" class="dropdown-item">Booking</a>
+              <a href="{% url 'main:booking' %}" class="dropdown-item">Booking</a>
               <a href="team.html" class="dropdown-item">Our Team</a>
               <a href="testimonial.html" class="dropdown-item"
                 >Testimonial</a
@@ -53,7 +53,7 @@
           <a href="{% url 'main:contact' %}" class="nav-item nav-link">Contact</a>
           <a href="{% url 'profiles:my-profile' %}" class="nav-item nav-link active">Profile</a>
         </div>
-        <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
+        <a href="{% url 'main:booking' %}" class="btn btn-primary py-2 px-4">Book A Table</a>
       </div>
     </nav>
 

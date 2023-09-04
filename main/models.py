@@ -50,3 +50,12 @@ class Query(models.Model):
 
     def __str__(self) -> str:
         return f'{self.name}-{self.subject}'
+
+
+class BookATable(models.Model):
+    name = models.CharField(max_length=30)
+    email = models.EmailField(max_length=250)
+    date = models.DateTimeField()
+    num_people = models.IntegerField()
+    special_request = models.CharField(max_length=300)
+    created = models.DateTimeField(auto_now_add=True)
