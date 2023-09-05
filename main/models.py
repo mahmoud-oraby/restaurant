@@ -57,5 +57,8 @@ class BookATable(models.Model):
     email = models.EmailField(max_length=250)
     date = models.DateTimeField()
     num_people = models.IntegerField()
-    special_request = models.CharField(max_length=300)
-    created = models.DateTimeField(auto_now_add=True)
+    special_request = models.TextField(max_length=300)
+    created = models.DateField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.name

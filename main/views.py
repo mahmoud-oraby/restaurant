@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Menu, MasterChef, Query
-from .forms import QueryForm
+from .forms import QueryForm, BookATableForm
 from django.contrib import messages
 # Create your views here.
 
@@ -33,5 +33,13 @@ def contact(request):
 
 
 def booking(request):
+    form = BookATableForm()
+    if request.method == "POST":
+        form = BookATableForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Success!")
+        else:
+            messages.error(request, "Invalid")
 
-    return render(request, 'booking.html')
+    return render(request, 'booking.html', {'form': form})
