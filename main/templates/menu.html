@@ -137,13 +137,13 @@ Menu
                       <h5
                         class="d-flex justify-content-between border-bottom pb-2"
                       >
-                        <span>Chicken Burger</span>
-                        <span class="text-primary">${{item.price}}</span>
+                        <span>{{item.title}}</span> 
+                        <span class="text-primary">${{item.price | floatformat:2}}</span>
                       </h5>
                       <small class="fst-italic"
-                        >{{item.description}}</small
+                      >{{item.description}}</small
                       >
-                    </div>
+                      <a href="{% url 'order:create-order' item.id %}" class='btn btn-outline-secondary add-btn update-cart'>Add to Cart</a>                    </div>
                   </div>
                 </div>
                 {% endfor %}

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Menu, MasterChef, Query
 from .forms import QueryForm, BookATableForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -14,6 +15,7 @@ def about(request):
     return render(request, 'about.html', {"chefs": master_chefs})
 
 
+@login_required(login_url="login")
 def menu(request):
     menu = Menu.objects.all()
 
