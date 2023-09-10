@@ -11,151 +11,119 @@ Menu
 
 {% block content %}
 <div class="container-xxl bg-white p-0">
-    <!-- Navbar & Hero Start -->
-    <div class="container-xxl position-relative p-0">
-      <nav
-        class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0"
-      >
+  <!-- Navbar & Hero Start -->
+  <div class="container-xxl position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
       <a href="{% url 'main:index' %}" class="navbar-brand p-0">
         <h1 class="text-primary m-0">
           <i class="fa fa-utensils me-3"></i>Restoran
         </h1>
       </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarCollapse"
-        >
-          <span class="fa fa-bars"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <div class="navbar-nav ms-auto py-0 pe-4">
-            <a href="{% url 'main:index' %}" class="nav-item nav-link ">Home</a>
-            <a href="{% url 'main:about' %}" class="nav-item nav-link ">About</a>
-            <a href="{% url 'main:menu' %}" class="nav-item nav-link active">Menu</a>
-            <div class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link dropdown-toggle"
-                data-bs-toggle="dropdown"
-                >Pages</a
-              >
-              <div class="dropdown-menu m-0">
-                <a href="booking.html" class="dropdown-item">Booking</a>
-                <a href="team.html" class="dropdown-item">Our Team</a>
-                <a href="testimonial.html" class="dropdown-item"
-                  >Testimonial</a
-                >
-              </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0 pe-4">
+          <a href="{% url 'main:index' %}" class="nav-item nav-link ">Home</a>
+          <a href="{% url 'main:about' %}" class="nav-item nav-link ">About</a>
+          <a href="{% url 'main:menu' %}" class="nav-item nav-link active">Menu</a>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+            <div class="dropdown-menu m-0">
+              <a href="booking.html" class="dropdown-item">Booking</a>
+              <a href="team.html" class="dropdown-item">Our Team</a>
+              <a href="testimonial.html" class="dropdown-item">Testimonial</a>
             </div>
-            <a href="{% url 'main:contact' %}" class="nav-item nav-link">Contact</a>
-            <a href="{% url 'profiles:my-profile' %}" class="nav-item nav-link ">Profile</a>
           </div>
-          <a href="{% url 'main:booking' %}" class="btn btn-primary py-2 px-4">Book A Table</a>
+          <a href="{% url 'main:contact' %}" class="nav-item nav-link">Contact</a>
+          <a href="{% url 'profiles:my-profile' %}" class="nav-item nav-link ">Profile</a>
         </div>
-      </nav>
+        <a href="{% url 'main:booking' %}" class="btn btn-primary py-2 px-4">Book A Table</a>
+      </div>
+    </nav>
 
-      <div class="container-xxl py-5 bg-dark hero-header mb-5">
-        <div class="container text-center my-5 pt-5 pb-4">
-          <h1 class="display-3 text-white mb-3 animated slideInDown">
-            Food Menu
-          </h1>
-        </div>
+    <div class="container-xxl py-5 bg-dark hero-header mb-5">
+      <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">
+          Food Menu
+        </h1>
       </div>
     </div>
-    <!-- Navbar & Hero End -->
+  </div>
+  <!-- Navbar & Hero End -->
 
-    <!-- Menu Start -->
-    <div class="container-xxl py-5">
-      <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-          <h5
-            class="section-title ff-secondary text-center text-primary fw-normal"
-          >
-            Food Menu
-          </h5>
-          <h1 class="mb-5">Most Popular Items</h1>
-        </div>
-        <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
-          <ul
-            class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5"
-          >
-            <li class="nav-item">
-              <a
-                class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active"
-                data-bs-toggle="pill"
-                href="#tab-1"
-              >
+  <!-- Menu Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <h5 class="section-title ff-secondary text-center text-primary fw-normal">
+          Food Menu
+        </h5>
+        <h1 class="mb-5">Most Popular Items</h1>
+      </div>
+      <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
+        <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
+          <li class="nav-item">
+            <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill" href="#tab-1">
               <i class="fa-solid fa-mug-saucer fa-2xl"></i>
-                <div class="ps-3">
-                  <small class="text-body">Popular</small>
-                  <h6 class="mt-n1 mb-0">Breakfast</h6>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="d-flex align-items-center text-start mx-3 pb-3"
-                data-bs-toggle="pill"
-                href="#tab-2"
-              >
+              <div class="ps-3">
+                <small class="text-body">Popular</small>
+                <h6 class="mt-n1 mb-0">Breakfast</h6>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2">
               <i class="fa-solid fa-burger fa-2xl"></i>
-                <div class="ps-3">
-                  <small class="text-body">Special</small>
-                  <h6 class="mt-n1 mb-0">Launch</h6>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="d-flex align-items-center text-start mx-3 me-0 pb-3"
-                data-bs-toggle="pill"
-                href="#tab-3"
-              >
-                <i class="fa-solid fa-utensils fa-2xl"></i>
-                <div class="ps-3">
-                  <small class="text-body">Lovely</small>
-                  <h6 class="mt-n1 mb-0">Dinner</h6>
-                </div>
-              </a>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div id="tab-1" class="tab-pane fade show p-0 active">
-              <div class="row g-4">
-                {% for item in menu %}
-                <div class="col-lg-6">
-                  <div class="d-flex align-items-center">
-                    <img
-                      class="flex-shrink-0 img-fluid rounded"
-                      src="{{item.image.url}}"
-                      alt=""
-                      style="width: 80px"
-                    />
-                    <div class="w-100 d-flex flex-column text-start ps-4">
-                      <h5
-                        class="d-flex justify-content-between border-bottom pb-2"
-                      >
-                        <span>{{item.title}}</span> 
-                        <span class="text-primary">${{item.price | floatformat:2}}</span>
-                      </h5>
-                      <small class="fst-italic"
-                      >{{item.description}}</small
-                      >
-                      <a href="{% url 'order:create-order' item.id %}" class='btn btn-outline-secondary add-btn update-cart'>Add to Cart</a>                    </div>
+              <div class="ps-3">
+                <small class="text-body">Special</small>
+                <h6 class="mt-n1 mb-0">Launch</h6>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3">
+              <i class="fa-solid fa-utensils fa-2xl"></i>
+              <div class="ps-3">
+                <small class="text-body">Lovely</small>
+                <h6 class="mt-n1 mb-0">Dinner</h6>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div id="tab-1" class="tab-pane fade show p-0 active">
+            <div class="row g-4">
+              {% for item in menu %}
+              <div class="col-lg-6">
+                <div class="d-flex align-items-center">
+                  <img class="flex-shrink-0 img-fluid rounded" src="{{item.image.url}}" alt="" style="width: 80px" />
+                  <div class="w-100 d-flex flex-column text-start ps-4">
+                    <h5 class="d-flex justify-content-between border-bottom pb-2">
+                      <span>{{item.title}}</span>
+                      <span class="text-primary">${{item.price | floatformat:2}}</span>
+                    </h5>
+                    <small class="fst-italic">{{item.description}}</small>
+                    {% if item.id in items %}
+                    <a href="{% url 'order:create-order' item.id %}"
+                      class='btn btn-outline-secondary add-btn update-cart'>Go to Cart</a>
+                    {% else %}
+                    <a href="{% url 'order:create-order' item.id %}"
+                      class='btn btn-outline-secondary add-btn update-cart'>Add to Cart</a>
+                    {% endif %}
                   </div>
                 </div>
-                {% endfor %}
               </div>
+              {% endfor %}
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Menu End -->
+  </div>
+  <!-- Menu End -->
 
-    <!-- Footer Start -->
-    {% include "includes/footer.html" %}
-    <!-- Footer End -->
-{% endblock content %}
+  <!-- Footer Start -->
+  {% include "includes/footer.html" %}
+  <!-- Footer End -->
+  {% endblock content %}

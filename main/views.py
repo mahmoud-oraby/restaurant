@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Menu, MasterChef, Query
+from .models import Menu, MasterChef
+from order.models import Order, OrderItem
 from .forms import QueryForm, BookATableForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -18,8 +19,20 @@ def about(request):
 @login_required(login_url="login")
 def menu(request):
     menu = Menu.objects.all()
+    order = Order.objects.get(customer=request.user)
+    order_item = OrderItem.objects.filter(order=order).all()
 
-    return render(request, 'menu.html', {'menu': menu})
+    items = []
+
+    for i in order_item:
+        items.append(i.product.pk)
+
+    return render(request, 'menu.html', {
+        'menu': menu,
+        'order_item': order_item,
+        'items': items
+
+    })
 
 
 def contact(request):
