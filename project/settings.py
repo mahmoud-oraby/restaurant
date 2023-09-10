@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'profiles.apps.ProfilesConfig',
     'fontawesomefree',
     'order',
+    'cart',
 ]
 
 MIDDLEWARE = [

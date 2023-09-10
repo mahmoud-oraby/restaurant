@@ -106,7 +106,7 @@ Menu
                     <small class="fst-italic">{{item.description}}</small>
                     {% if item.id in items %}
                     <a href="{% url 'order:create-order' item.id %}"
-                      class='btn btn-outline-secondary add-btn update-cart'>Go to Cart</a>
+                      class='btn btn-outline-secondary add-btn update-cart bg-primary text-white'>Go to Cart</a>
                     {% else %}
                     <a href="{% url 'order:create-order' item.id %}"
                       class='btn btn-outline-secondary add-btn update-cart'>Add to Cart</a>
