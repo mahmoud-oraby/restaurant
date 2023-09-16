@@ -32,8 +32,8 @@
         
                         <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                         <!-- Data -->
-                        <p><strong>{{item.product.title}}</strong></p>
-                        <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
+                        <p class="fs-4" ><strong>{{item.product.title}}</strong></p>
+                        <button type="button" class="btn btn-danger btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
                             title="Remove item">
                             <i class="fas fa-trash"></i>
                         </button>
@@ -62,7 +62,7 @@
         
                         <!-- Price -->
                         <p class="text-start text-md-center">
-                            <strong>${{item.product.price * item.quantity}}</strong>
+                            <strong>${{item.product.price}}</strong>
                         </p>
                         <!-- Price -->
                         </div>
@@ -106,9 +106,10 @@
                     </li>
                 </ul>
     
-                <button type="button" class="btn btn-primary btn-lg btn-block">
+
+                <a href="{% url 'checkout:checkout' order_id %}" target="_blank" class="btn btn-primary btn-lg btn-block">
                     Go to checkout
-                </button>
+                </a>
                 </div>
             </div>
             </div>

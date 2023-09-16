@@ -1,3 +1,7 @@
+from django.views import View
+from django.shortcuts import redirect
+from django.conf import settings
+import stripe
 from django.shortcuts import render
 from .models import Menu, MasterChef
 from order.models import Order, OrderItem
@@ -19,7 +23,7 @@ def about(request):
 @login_required(login_url="login")
 def menu(request):
     menu = Menu.objects.all()
-    order = Order.objects.get(customer=request.user)
+    order, Created = Order.objects.get_or_create(customer=request.user)
     order_item = OrderItem.objects.filter(order=order).all()
 
     items = []

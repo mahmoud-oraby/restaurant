@@ -10,10 +10,6 @@ def cart(request):
     order = Order.objects.get(customer=request.user)
     order_item = OrderItem.objects.filter(order=order).all()
 
-    total_price = 0
-    for item in order_item:
-        total_price += item.product.price * item.quantity
-
     if request.method == "POST":
         quantity = int(request.POST.get('quantity'))
         if quantity <= 0:
@@ -25,9 +21,12 @@ def cart(request):
             item.quantity = quantity
             item.save()
             order_item = OrderItem.objects.filter(order=order).all()
+    total_price = 0
+    for item in order_item:
+        total_price += item.product.price * item.quantity
 
     return render(request, 'cart.html', {
         'order_item': order_item,
         'total_price': str(total_price),
-        # 'price_item':
+        "order_id": order.transaction_id
     })
