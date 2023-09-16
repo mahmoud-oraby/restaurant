@@ -28,5 +28,5 @@ def cart(request):
     return render(request, 'cart.html', {
         'order_item': order_item,
         'total_price': str(total_price),
-        "order_id": order.transaction_id
+        "order_id": order.id
     })

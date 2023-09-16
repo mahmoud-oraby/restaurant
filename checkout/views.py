@@ -18,7 +18,7 @@ class CreateStripeCheckoutSessionView(View):
     """
 
     def get(self, request, id, *args, **kwargs):
-        order = OrderItem.objects.filter(order_id__transaction_id=id).all()
+        order = OrderItem.objects.filter(order_id=id).all()
 
         items = [qs for qs in order]
         line_items = []
