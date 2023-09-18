@@ -17,8 +17,9 @@ class CreateStripeCheckoutSessionView(View):
     Create a checkout session and redirect the user to Stripe's checkout page
     """
 
-    def get(self, request, id, *args, **kwargs):
-        order = OrderItem.objects.filter(order_id=id).all()
+    def get(self, request,  *args, **kwargs):
+        order = OrderItem.objects.filter(
+            order_id__customer_id=request.user).all()
 
         items = [qs for qs in order]
         line_items = []

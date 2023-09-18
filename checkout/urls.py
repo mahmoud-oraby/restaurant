@@ -4,7 +4,7 @@ from . import views
 app_name = 'checkout'
 
 urlpatterns = [
-    path('<int:id>/',
+    path('',
          views.CreateStripeCheckoutSessionView.as_view(), name='checkout'),
     path('success/', views.SuccessView.as_view(), name='success'),
 ]
