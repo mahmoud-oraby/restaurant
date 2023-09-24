@@ -8,6 +8,7 @@ from order.models import Order, OrderItem
 from .forms import QueryForm, BookATableForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 # Create your views here.
 
 
@@ -23,8 +24,10 @@ def about(request):
 @login_required(login_url="login")
 def menu(request):
     menu = Menu.objects.all()
-    order, Created = Order.objects.get_or_create(customer=request.user)
-    order_item = OrderItem.objects.filter(order=order).all()
+    order, Created = Order.objects.get_or_create(
+        customer=request.user, completed=False)
+    order_item = OrderItem.objects.filter(
+        Q(order=order) & Q(order_id__completed=False)).all()
 
     items = []
 

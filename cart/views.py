@@ -1,15 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.urls import reverse
 from order.models import Order, OrderItem
 from main.models import Menu
 from django.contrib import messages
+from django.db.models import Q
 
 # Create your views here.
 
 
 def cart(request):
-    order = Order.objects.get(customer=request.user)
+    order = Order.objects.filter(
+        Q(customer=request.user) & Q(completed=False)).first()
     order_item = OrderItem.objects.filter(order=order).all()
-
     if request.method == "POST":
         quantity = int(request.POST.get('quantity'))
         if quantity <= 0:
@@ -28,5 +30,9 @@ def cart(request):
     return render(request, 'cart.html', {
         'order_item': order_item,
         'total_price': str(total_price),
-        "order_id": order.id
     })
+
+
+def remove_item_form_cart(request, id):
+    item = OrderItem.objects.get(id=id).delete()
+    return HttpResponseRedirect(reverse('cart:cart'))

@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
+from django.views.generic.base import View
 import stripe
 from order.models import Order, OrderItem
 from django.views import View
 from django.conf import settings
+from cart.models import Cart
+
 # Create your views here.
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
-
-print(stripe)
 
 
 class CreateStripeCheckoutSessionView(View):
@@ -18,8 +18,9 @@ class CreateStripeCheckoutSessionView(View):
     """
 
     def get(self, request,  *args, **kwargs):
-        order = OrderItem.objects.filter(
-            order_id__customer_id=request.user).all()
+        cart = Cart.objects.get(
+            order_id__customer_id=request.user)
+        order = OrderItem.objects.filter(order=cart.order).all()
 
         items = [qs for qs in order]
         line_items = []
@@ -52,6 +53,10 @@ class CreateStripeCheckoutSessionView(View):
         return redirect(checkout_session.url)
 
 
-class SuccessView(TemplateView):
-
-    template_name = "success.html"
+class SuccessView(View):
+    def get(self, request, *args, **kwargs):
+        order = Order.objects.get(customer=request.user, completed=False)
+        order.completed = True
+        order.save()
+        cart = Cart.objects.get(order_id__customer_id=request.user).delete()
+        return render(request, "success.html")

@@ -33,10 +33,10 @@
                         <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                         <!-- Data -->
                         <p class="fs-4" ><strong>{{item.product.title}}</strong></p>
-                        <button type="button" class="btn btn-danger btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
+                        <a href="{% url 'cart:remove-item-form-cart' item.id %}" type="button" class="btn btn-danger btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
                             title="Remove item">
                             <i class="fas fa-trash"></i>
-                        </button>
+                        </a>
                         <!-- Data -->
                         </div>
         
