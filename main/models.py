@@ -17,6 +17,10 @@ class Menu(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     description = models.TextField(blank=True)
 
+    class Meta:
+        verbose_name_plural = ('Menu')
+        ordering = ('title',)
+
     def __str__(self) -> str:
         return self.title
 
