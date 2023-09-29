@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.urls import reverse
 from order.models import Order, OrderItem
-from main.models import Menu
+from django.views.generic import DeleteView
 from django.contrib import messages
 from django.db.models import Q
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -33,6 +34,9 @@ def cart(request):
     })
 
 
-def remove_item_form_cart(request, id):
-    item = OrderItem.objects.get(id=id).delete()
-    return HttpResponseRedirect(reverse('cart:cart'))
+class RemoveItemFromCartView(DeleteView):
+    model = OrderItem
+    success_url = reverse_lazy("cart:cart")
+
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)

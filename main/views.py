@@ -1,7 +1,6 @@
 from django.views import View
 from django.shortcuts import redirect
 from django.conf import settings
-import stripe
 from django.shortcuts import render
 from .models import Menu, MasterChef
 from order.models import Order, OrderItem
