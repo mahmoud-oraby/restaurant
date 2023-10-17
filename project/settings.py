@@ -11,25 +11,26 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from pathlib import Path
+import dj_databsae_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-load_dotenv()
+# load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-af&5^r7f@_+a@&z-_tl_!z)*x=15p-h_y1jo7$k@jipc*jr_yc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -87,11 +88,16 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_databsae_url.parse('postgres://restaurantdatabase_user:lNegL7hxttny5aANXir2xamLJEc87AmK@dpg-ckdt0tdjhfbs7382ql2g-a.frankfurt-postgres.render.com/restaurantdatabase')
 }
 
 
@@ -142,15 +148,15 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = '8b36be357f77bf'
+EMAIL_HOST_PASSWORD = 'd6fc80425c5c25'
 EMAIL_PORT = '2525'
 EMAIL_USE_TLS = True
 
 BACKEND_DOMAIN = 'http://127.0.0.1:8000'
 
-STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
-STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51Nqef1L7E4O2ktraVr1yHPYlae0NxDHVfxpK7eqA3mEYaAvFgXhNXflSdIfUvb4frYzX9ePH6m5FHcCQqKEgB8Ri00DfMp10Tm'
+STRIPE_SECRET_KEY = 'sk_test_51Nqef1L7E4O2ktraNqme9NknSIBQYO5czkVnlZclwrnmBV9ODbD4Ur9CVmTaApwrHtxeRDE9FUypgAHSzH6APYIT004D236CgX'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

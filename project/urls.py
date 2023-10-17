@@ -27,8 +27,10 @@ urlpatterns = [
     path('order/', include('order.urls')),
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-admin.site.index_title= 'restaurant'
-admin.site.site_header= 'The Restaurant Admin'
-admin.site.site_title= 'The Restaurant Admin'
+admin.site.index_title = 'restaurant'
+admin.site.site_header = 'The Restaurant Admin'
+admin.site.site_title = 'The Restaurant Admin'
